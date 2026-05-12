@@ -1,16 +1,78 @@
-# React + Vite
+# Movie App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A polished React movie discovery app that combines the TMDB API with Appwrite to deliver: search results, trending movies, and search analytics.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Search thousands of movies using the TMDB API
+- Display popular movies by default
+- Show trending movie results based on previous searches stored in Appwrite
+- Debounced search input for better performance
+- Clean UI built with React and Tailwind CSS
 
-## React Compiler
+## Technologies
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19
+- Vite
+- Tailwind CSS
+- Appwrite
+- TMDB API
+- react-use
 
-## Expanding the ESLint configuration
+## How It Works
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `App.jsx` fetches movie data from TMDB.
+- Search input is debounced using `useDebounce`.
+- Appwrite stores search terms and counts for trending display.
+- Trending movies are loaded from Appwrite and displayed separately.
+
+## Setup
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Create a `.env` file in the project root with these variables:
+
+```env
+VITE_TMDB_API_KEY=your_tmdb_api_key
+VITE_APPWRITE_ENDPOINT=https://your-appwrite-endpoint/v1
+VITE_APPWRITE_PROJECT_ID=your_project_id
+VITE_APPWRITE_DATABASE_ID=your_database_id
+VITE_APPWRITE_COLLECTION_ID=your_collection_id
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open the local Vite URL shown in the terminal.
+
+## Scripts
+
+- `npm run dev` – start development server
+- `npm run build` – create production build
+- `npm run preview` – preview production build locally
+- `npm run lint` – run ESLint
+
+## Project Structure
+
+- `src/App.jsx` – main app component and movie fetching logic
+- `src/appwrite.js` – Appwrite database helpers for search tracking
+- `src/components/search.jsx` – search input component
+- `src/components/MovieCard.jsx` – movie card display component
+- `src/components/spinner.jsx` – loading spinner
+
+## Notes
+
+- Make sure your TMDB API key is properly configured.
+- Appwrite must be set up with a database and collection for search tracking.
+- The trending section is generated from the Appwrite collection ordered by search count.
+
+## License
+
+This project is open for modification and learning purposes.
