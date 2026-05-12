@@ -73,6 +73,3 @@ npm run dev
 - Appwrite must be set up with a database and collection for search tracking.
 - The trending section is generated from the Appwrite collection ordered by search count.
 
-## License
-
-This project is open for modification and learning purposes.
